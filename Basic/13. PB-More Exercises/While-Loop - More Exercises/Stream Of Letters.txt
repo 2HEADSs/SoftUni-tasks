@@ -1,0 +1,120 @@
+https://pastebin.com/G2Fvy78n
+
+function solve(input) {
+ 
+ 
+let index = 0;
+ 
+let word = '';
+ 
+let caseC = 0;
+ 
+let caseO = 0;
+ 
+let caseN = 0;
+ 
+let counter = 0;
+ 
+let word2 = '';
+ 
+let repeatedWord = '';
+ 
+ 
+while (input[index] !== 'End') {
+ 
+    let currentLetter = input[index];
+ 
+    if (currentLetter.match(/[a-z]/i)) {
+ 
+ 
+ 
+ 
+        if (currentLetter !== 'c' && currentLetter !== 'o' && currentLetter !== 'n') {
+ 
+            word += currentLetter;
+ 
+            repeatedWord = currentLetter;
+ 
+        } else {
+ 
+            if (currentLetter === 'c') {
+ 
+                caseC += 1;
+ 
+            } else if (currentLetter === 'o') {
+ 
+                caseO += 1;
+ 
+            } else if (currentLetter === 'n') {
+ 
+                caseN += 1;
+ 
+            }
+ 
+        }
+ 
+ 
+ 
+ 
+        if (caseC >= 1 && caseO >= 1 && caseN >= 1) {
+ 
+ 
+ 
+            counter += 1;
+ 
+            if (counter > 1) {
+ 
+                word2 += ' ' + word;
+ 
+            } else {
+ 
+                word2 += word;
+ 
+            }
+ 
+ 
+ 
+           word = '';
+ 
+            caseC = 0;
+ 
+            caseO = 0;
+ 
+            caseN = 0;
+ 
+        }
+ 
+ 
+ 
+ 
+ 
+        if (caseC > 1 && (repeatedWord !== currentLetter) && currentLetter === 'c') {
+ 
+            word += currentLetter;
+ 
+        } else if (caseO > 1 && (repeatedWord !== currentLetter) && currentLetter === 'o') {
+ 
+            word += currentLetter;
+ 
+        } else if (caseN > 1 && (repeatedWord !== currentLetter) && currentLetter === 'n') {
+ 
+            word += currentLetter;
+ 
+        }
+ 
+ 
+ 
+ 
+    }
+ 
+ 
+ index++;   
+ 
+} // While loop
+ 
+ 
+console.log(word2);
+ 
+ 
+ 
+}
