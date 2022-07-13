@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>DOM I PART</title>
+  </head>
+  <body>
+    <h1 id="heading">Hello DOM</h1>
+    <ul>
+      <li>BMW</li>
+      <li>Audi</li>
+      <li id="mercedes-car">Mercedes</li>
+    </ul>
+
+    <button onclick="onButtonClick()">Write My Name in 'Console'</button>
+    <button onclick="onSecondButtonClick()">Second</button>
+    <button onclick="changeTitle()">Title change - LOOk title</button>
+    <button onclick="changeTitleAgain()">Title change Again</button>
+    <button onclick="changeCar()">Change Mercedes</button>
+
+    <script>
+      function onButtonClick() {
+        let name = 'Pavel';
+        console.log(name);
+      }
+
+      //Change title
+      function changeTitle() {
+        let headingElement = document.getElementById('heading');
+        headingElement.textContent = 'Hello from JS';
+      }
+
+      function changeTitleAgain() {
+        let secondHeadingElement = document.getElementById('heading');
+        secondHeadingElement.innerHTML = 'Difrent <em>JS</em>';
+      }
+
+      function changeCar() {
+        let carElement = document.getElementById('mercedes-car');
+        carElement.textContent = 'Mercedes S500 L'
+      }
+    </script>
+    <script src="/demo.js"></script>
+  </body>
+</html>
