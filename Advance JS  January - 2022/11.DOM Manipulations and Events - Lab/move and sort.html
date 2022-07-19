@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+    <style>
+      ul {
+        border: 1px solid black;
+        margin: 16px;
+        padding: 16px;
+        float: left;
+      }
+    </style>
+  </head>
+  <body>
+    <ul>
+      <li>First</li>
+      <li>Second</li>
+      <li>Third</li>
+    </ul>
+
+    <ul>
+      <li>Fourth</li>
+      <li>Fifth</li>
+    </ul>
+
+    <ul id="list">
+      <li>2</li>
+      <li>5</li>
+      <li>1</li>
+      <li>7</li>
+      <li>4</li>
+    </ul>
+    <button onclick="sort()">Sort List</button>
+
+    <ul id="sort"></ul>
+    <script>
+      //add and move element from one 'UL' to another
+      let li = document.querySelector('ul').children[1];
+      let secondUlElement = document.querySelectorAll('ul')[1].appendChild(li);
+      //     console.log(secondUlElement);
+      //     console.log(li.textContent);
+      document.querySelectorAll('ul')[0].appendChild(li);
+      //
+
+    //   //Sorted from One Ul to Another - firstWay
+    //   function sort() {
+    //     let sortedList = document.getElementById('sort');
+    //     let numsFromList = [...document.getElementById('list').children];
+    //     numsFromList.sort((a, b) => {
+    //       return Number(a.textContent) - Number(b.textContent);
+    //     });
+
+    //     for (let element of numsFromList) {
+    //       console.log(element);
+    //       sortedList.appendChild(element);
+    //     }
+    //   }
+    //   //
+
+
+
+      //Sorted from One Ul to Another - secondWay
+      function sort() {
+        let list = document.getElementById('list');
+        let elements = [...list.children];
+        elements.sort((a, b) => {
+          return Number(a.textContent) - Number(b.textContent);
+        });
+
+        for (let element of elements) {
+          console.log(element);
+          list.appendChild(element);
+        }
+      }
+    </script>
+  </body>
+</html>

@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+  </head>
+  <body>
+    <button>0</button>
+    <button>100</button>
+    <button>200</button>
+    <button>300</button>
+    <button>400</button>
+
+    <script>
+      let buttons = document.getElementsByTagName('button');
+      for (let button of buttons) {
+        button.addEventListener('click', increment);
+      }
+
+      function increment(e) {
+        let value = Number(e.target.textContent);
+        value++;
+        e.target.textContent = value;
+      }
+    </script>
+  </body>
+</html>
