@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <button> Click me</button>
+    <div>
+        <ul></ul>
+    </div>
+    <script>
+        let button = document.querySelector('button')
+        let ulElement = document.querySelector('div');
+        let url = 'https://api.github.com/users/testnakov/repos';
+        button.addEventListener('click', () => {
+            console.log('Before Each');
+            fetch(url)
+                .then(res => res.json())
+                .then(data => {
+                    setTimeout(() => {
+                        data.map(x => {
+                            let li = document.createElement('li');
+                            li.textContent = x.name;
+                            ulElement.appendChild(li)
+
+                        })
+                    }, 2000)
+                    console.log('Data Returned');
+                })
+                .catch(err => console.log(err));
+            console.log('After Fetch');
+        });
+        let btn = document.getElementsByTagName('button')[0];
+        console.log(btn);
+    </script>
+</body>
+
+</html>
