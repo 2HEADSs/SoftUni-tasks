@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <title>My Cookbook</title>
+    <link rel="stylesheet" href="static/site.css">
+    <link rel="stylesheet" href="static/recipe.css">
+    <link rel="stylesheet" href="static/form.css">
+</head>
+
+<body>
+    <header>
+        <h1>My Cookbook</h1>
+        <nav>
+            <a href="index.html">Catalog</a>
+            <a href="login.html">Login</a>
+            <a class="active">Register</a>
+        </nav>
+    </header>
+    <main>
+        <article>
+            <h2>Register</h2>
+            <form>
+                <label>E-mail: <input type="text" name="email"></label>
+                <label>Password: <input type="password" name="password"></label>
+                <label>Repeat: <input type="password" name="rePass"></label>
+                <input type="submit" value="Register">
+            </form>
+        </article>
+        <script>
+            let formElement = document.querySelector('form');
+            formElement.addEventListener('submit', (e) => {
+                e.preventDefault()
+                let formData = new FormData(e.currentTarget);
+                let email = formData.get('email');
+                let password = formData.get('password');
+                let rePass = formData.get('rePass');
+                let body = {
+                    email,
+                    password,
+                };
+                if (password.value == rePass.value) {
+                    fetch('http://localhost:3030/users/register', {
+                        method: 'POST',
+                        headers: {
+                            'content-type': 'application.json'
+                        },
+                        body: JSON.stringify(body)
+                    })
+                        .then(res => res.json())
+                        .then(newUser => {
+                            localStorage.setItem('id', newUser._id);
+                            localStorage.setItem('username', newUser.email);
+                            localStorage.setItem('accessToken', newUser.accessToken);
+                        })
+                        .catch(err => console.log(err))
+                }
+            })
+        </script>
+        //
+        <!-- {email: 'pavel@abv.bg', password: '123456', _createdOn: 1655893658649, 
+        // _id: 'c30563c1-9d6f-41d3-aca7-cbc76f1570d0', 
+        // accessToken: 'f9582b50e77fa8a45da28d6659a47c0c2186ad575c090adb67616b6c2cbbfdfd'} -->
+    </main>
+</body>
+
+</html>
