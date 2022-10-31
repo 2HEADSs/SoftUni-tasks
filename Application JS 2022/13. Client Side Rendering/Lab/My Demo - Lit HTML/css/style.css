@@ -1,0 +1,16 @@
+body {
+    padding: 20px;
+}
+
+.horizontal {
+    list-style: none;
+    display: inline;
+}
+
+.horizontal li {
+    display: inline;
+}
+
+.vertical {
+    list-style: disc;
+}
